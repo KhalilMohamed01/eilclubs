@@ -1,5 +1,40 @@
 const Club = require('../models/clubModel')
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
+
+
+const createToken = (_id) => {
+    return jwt.sign({_id},process.env.SECRET,{expiresIn:'3d'})
+}
+
+//login user
+const loginUser = async (req,res) => {
+    const {username,password} = req.body    
+    try{
+        const club = await Club.login(username,password)
+        const clubid = club._id;
+        const token = createToken(clubid)
+        res.status(200).json({clubid,token})
+    }catch(error){
+        res.status(400).json({error:error.message})
+    }
+}
+
+//signup user
+
+const signupUser = async (req,res) => {
+    const data = req.body 
+    let username = data.admin.username
+    
+    try{
+        const club= await Club.signup(data.name,data.admin.username,data.admin.password)
+
+        const token = createToken(club._id)
+        res.status(200).json({username,token})
+    }catch(error){
+        res.status(400).json({error:error.message})
+    }
+}
 
 // get all events
 const getClubs = async (req, res) => {
@@ -94,5 +129,7 @@ module.exports = {
   createClub,
   deleteClub,
   updateClub,
-  getClubByAdmin
+  getClubByAdmin,
+  loginUser,
+  signupUser
 }

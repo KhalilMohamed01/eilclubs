@@ -5,14 +5,23 @@ const {
   createClub, 
   deleteClub, 
   updateClub,
-  getClubByAdmin
+  getClubByAdmin,
+  loginUser,
+   signupUser,
 } = require('../controllers/clubController')
 
 
 const router = express.Router()
 
+router.post('/login',loginUser)
+
+//signup route
+router.post('/signup',signupUser)
+
+
 // GET all workouts
 router.get('/', getClubs)
+
 
 // GET a single workout
 router.get('/:id', getClub)
