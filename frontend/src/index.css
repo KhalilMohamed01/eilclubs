@@ -7,6 +7,8 @@
   --primary-color: #5C01B7;
   --primary-light-color: #7604e8;
   --error-color: #BA3030;
+  --sucess-color: #498111;
+
 }
 
 
@@ -319,6 +321,17 @@ hr{
   min-height: 93vh;
 }
 
+
+.event-info > .title {
+  font-weight: bold;
+  padding: 2px;
+  max-lines: 2;
+}
+
+.event-info > .date {
+  font-size: small;
+  padding-bottom: 5px;
+}
 @media screen and (max-width: 1024px) {
   textarea {
     min-width: 100%;
@@ -348,10 +361,7 @@ hr{
   .event-card{
     min-width: 98%;
   }
-  .error{
-    width:100%;
 
-  }
 }
 
 
@@ -364,11 +374,27 @@ hr{
   border: 1px solid var(--error-color);
   border-radius: 5px;
 }
+.sucess{
+  
+    color:var(--sucess-color);
+    width:100%;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 1px solid var(--sucess-color);
+    border-radius: 5px;
+  
+}
 
 /* MODAL */
 body.active-modal {
   overflow-y: hidden;
 }
+
+.hidden {
+  display: none;
+}
+
+
 
 
 

@@ -31,9 +31,9 @@ function EventCard( {event}) {
   return (
     <div  className="card event-card">
     <img src={event.poster} alt={event.title} />
-    <div className="event-info flex space">
-        <h5>{event.title} {event._id}</h5>
-        <h5>{formatDistanceToNow(new Date(event.date),{addSuffix:true})}</h5>
+    <div className="event-info space">
+        <div className='title'>{event.title} </div>
+        <div className='date'>{formatDistanceToNow(new Date(event.date),{addSuffix:true})}</div>
     </div>
     <div className="event-tools">
     <Dialog trigger={

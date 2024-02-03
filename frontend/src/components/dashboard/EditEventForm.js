@@ -12,6 +12,8 @@ function EditEventForm({event}) {
   const [poster, setPoster] = useState('')
   const [date, setDate] = useState('')
   const [error, setError] = useState(null)
+  const [sucess, setSucess] = useState(null)
+
 
 
       const {dispatch} = useDashboardContext()  
@@ -21,7 +23,6 @@ function EditEventForm({event}) {
     const getEventData = async () => {
       const response = await fetch('/api/events/' + event)
       const json = await response.json()
-      console.log(json)
       if(response.ok){
         let dateFormated = moment(json.date).format('YYYY-MM-DD');
         setTitle(json.title)
@@ -39,25 +40,27 @@ function EditEventForm({event}) {
     e.preventDefault();
 //do not refresh the page
    
-    const event = { title, desc, poster, date }
-    
-    const response = await fetch('/api/events', {
+    const updatedEvent = { title, desc, poster, date }
+    console.log(updatedEvent)
+    const response = await fetch('/api/events/'+ event, {
       method: 'PATCH',
-      body: JSON.stringify(event),
+      body: JSON.stringify(updatedEvent),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${club.token}`
       }
     })
     const json = await response.json()
+    console.log(json)
     if (!response.ok) {
       setError(json.error)
     }
     if (response.ok) {
-      setTitle('')
-      setDesc('')
-      setPoster('')
-      setDate('')
       setError(null)
+      setSucess("Event has been updated.")
+
+
+      dispatch({type: 'DELETE_EVENT',payload:{'_id':event}})
       dispatch({type: 'CREATE_EVENT',payload:json})
     }
 
@@ -71,7 +74,9 @@ function EditEventForm({event}) {
     <form className='event-form' onSubmit={handleSubmit}>
 
           <h2>Edit EVENT :</h2>
-          {error && <div className='error'>{error}</div>}          <label>Title :</label>
+          {sucess && <div className='sucess'>{sucess}</div>}
+          {error && <div className='error'>{error}</div>}       
+             <label>Title :</label>
           <input placeholder="Event's title" type='text' onChange={(e) => setTitle(e.target.value)} value={title} required></input>
           <label>Desc :</label>
         <textarea placeholder="Event's description" onChange={(e) => setDesc(e.target.value)} value={desc} required></textarea>  
