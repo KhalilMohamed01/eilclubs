@@ -16,7 +16,7 @@ function EditEventForm({event}) {
 
       const {dispatch} = useDashboardContext()  
 
-    const {user} = useAuthContext()
+    const {club} = useAuthContext()
 
     const getEventData = async () => {
       const response = await fetch('/api/events/' + event)

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const User = require('../models/userModel')
+const Club = require('../models/clubModel')
 
 const requireAuth = async (req,res,next) => {
 
@@ -15,7 +15,7 @@ const requireAuth = async (req,res,next) => {
     try{
         const {_id} = jwt.verify(token,process.env.SECRET)
 
-        req.user = await User.findOne({_id}).select('_id')
+        req.club = await Club.findOne({_id}).select('_id')
         next()
     }catch(error){
         console.log(error)

@@ -9,6 +9,7 @@ const {
   loginUser,
    signupUser,
 } = require('../controllers/clubController')
+const { getEventsByClub } = require('../controllers/eventController')
 
 
 const router = express.Router()
@@ -21,7 +22,6 @@ router.post('/signup',signupUser)
 
 // GET all workouts
 router.get('/', getClubs)
-
 
 // GET a single workout
 router.get('/:id', getClub)

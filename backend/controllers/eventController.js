@@ -8,22 +8,14 @@ const getEvents = async (req, res) => {
 }
 
 //get events by clubid
-/*const getEventsByClub = async (req,res) => {
+const getEventsByClub = async (req,res) => {
     const {id} =  req.params
   
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({error: 'ClubID is not valid'})
-    }
-  
-    const events = await Event.find({clubid:id})
-  
-    if (!events) {
-      return res.status(404).json({error:id})
-    }
+    const events = await Event.find({'club_id':id}).sort({createdAt:-1})
   
     res.status(200).json(events)
   }
-*/
+
 //geteventbyid
 const getEventById = async (req, res) => {
     const { id } = req.params 
@@ -45,7 +37,8 @@ const createEvent = async (req, res) => {
 
     //add doc to DB
     try {
-        const event = await Event.create({ title, desc, poster, date })
+        const club_id = req.club._id
+        const event = await Event.create({ title, desc, poster, date,club_id })
         res.status(200).json(event)
     } catch (error) {
         res.status(400).json({error})
@@ -94,5 +87,6 @@ module.exports = {
     getEventById,
     createEvent,
     deleteEvent,
-    updateEvent
+    updateEvent,
+    getEventsByClub
 }

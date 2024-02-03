@@ -6,7 +6,7 @@ import { useDashboardContext } from '../../hooks/useDashboardContext';
 
 function AddEventForm() {
   const {dispatch} = useDashboardContext()
-  const {user} = useAuthContext()
+  const {club} = useAuthContext()
 
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
@@ -17,7 +17,7 @@ function AddEventForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 //do not refresh the page
-    if(!user){
+    if(!club){
       setError('You must be logged in')
       return 
     }
@@ -28,7 +28,7 @@ function AddEventForm() {
       body: JSON.stringify(event),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user.token}`
+        'Authorization': `Bearer ${club.token}`
       }
     })
     const json = await response.json()

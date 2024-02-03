@@ -3,7 +3,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const eventRoutes = require('./routes/events')
-const userRoutes = require('./routes/user')
 const clubRoutes = require('./routes/clubs')
 const app = express()
 
@@ -17,7 +16,6 @@ app.use((req, res, next) => {
 
 
 app.use('/api/events',eventRoutes)
-app.use('/api/user',userRoutes)
 app.use('/api/clubs',clubRoutes)
 
 

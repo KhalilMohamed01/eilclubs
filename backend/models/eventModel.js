@@ -19,7 +19,10 @@ const eventSchema = new Schema({
         type: Date,
         required:true
     },
-
+    club_id : {
+        type:String,
+        required:true
+    }
 }, { timestamps: true })
 
 module.exports = mongoose.model('Event',eventSchema)

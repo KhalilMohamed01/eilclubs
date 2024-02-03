@@ -10,15 +10,15 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 
 function EventCard( {event}) {
     const {dispatch} = useDashboardContext()
-    const {user} = useAuthContext()
+    const {club} = useAuthContext()
     const handleDelete = async () => {
-        if(!user){
+        if(!club){
             return
         }
         const response = await fetch('/api/events/' + event._id,{
             method:'DELETE',
             headers: {
-                'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${club.token}`
               }
         })
 

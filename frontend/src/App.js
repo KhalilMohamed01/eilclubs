@@ -7,14 +7,14 @@ import { useAuthContext } from './hooks/useAuthContext';
 
 
 function App() {
-  const {user} = useAuthContext()
+  const {club} = useAuthContext()
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login"/>}/> 
-          <Route path="/login" element={!user ? <Login/> : <Navigate to="/dashboard"/>}/>
+          <Route path="/dashboard" element={club ? <Dashboard /> : <Navigate to="/login"/>}/> 
+          <Route path="/login" element={!club ? <Login/> : <Navigate to="/dashboard"/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

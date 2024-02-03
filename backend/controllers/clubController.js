@@ -12,9 +12,9 @@ const loginUser = async (req,res) => {
     const {username,password} = req.body    
     try{
         const club = await Club.login(username,password)
-        const clubid = club._id;
-        const token = createToken(clubid)
-        res.status(200).json({clubid,token})
+        const club_id = club._id;
+        const token = createToken(club_id)
+        res.status(200).json({club_id,token})
     }catch(error){
         res.status(400).json({error:error.message})
     }
@@ -28,9 +28,9 @@ const signupUser = async (req,res) => {
     
     try{
         const club= await Club.signup(data.name,data.admin.username,data.admin.password)
-
+        const club_id = club._id;
         const token = createToken(club._id)
-        res.status(200).json({username,token})
+        res.status(200).json({'_id':club_id,token})
     }catch(error){
         res.status(400).json({error:error.message})
     }

@@ -5,9 +5,9 @@ export const AuthContext = createContext()
 export const authReducer = (state,action) => {
     switch(action.type){
         case 'LOGIN':
-            return { user:action.payload}
+            return { club:action.payload}
         case 'LOGOUT':
-            return { user:null }
+            return { club:null }
         default:
             return state
         }
@@ -15,14 +15,14 @@ export const authReducer = (state,action) => {
 
 export const AuthContextProvider = ({children}) => {
     const [state,dispatch] = useReducer(authReducer,{
-        user:null
+        club:null
     })
 
     useEffect(()=>{
-        const user = JSON.parse(localStorage.getItem('user'))
+        const club = JSON.parse(localStorage.getItem('club'))
 
-        if(user){
-            dispatch({type:'LOGIN',payload:user})
+        if(club){
+            dispatch({type:'LOGIN',payload:club})
         }
     },[])
     console.log('AuthContext state: ',state )
