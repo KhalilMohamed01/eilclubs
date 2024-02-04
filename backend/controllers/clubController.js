@@ -1,6 +1,8 @@
 const Club = require('../models/clubModel')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+const validator = require('validator');
 
 
 const createToken = (_id) => {
@@ -104,23 +106,41 @@ const deleteClub = async (req, res) => {
   res.status(200).json(club)
 }
 
-// update a event
+// update club
 const updateClub = async (req, res) => {
   const { id } = req.params
+  const { name,desc,logo,socials,admin,oldPassword} = req.body
+  console.log(admin, oldPassword)
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({error: 'No such club'})
   }
-
-  const club = await Club.findOneAndUpdate({_id: id}, {
-    ...req.body
-  })
-
+  const club = await Club.findOne({_id:id}) 
+  console.log(club.admin.password)
   if (!club) {
     return res.status(400).json({error: 'No such club'})
   }
+  const match = await bcrypt.compare(oldPassword, club.admin.password)
 
-  res.status(200).json(club)
+  if (!match) {
+    return res.status(400).json({error: 'Current password is wrong !'})
+  }
+
+  if (!validator.isStrongPassword(admin.password)) {
+    return res.status(400).json({error: 'Please enter a strong password !'})
+  }
+
+  const salt = await bcrypt.genSalt(10)
+  const hash = await bcrypt.hash(admin.password, salt)
+  const newAdmin = {username:admin.username,password:hash}
+
+  const updatedClub = await Club.findOneAndUpdate({_id: id}, {
+    name,desc,logo,socials,admin:newAdmin
+  })
+
+
+
+  res.status(200).json(updatedClub)
 }
 
 module.exports = {

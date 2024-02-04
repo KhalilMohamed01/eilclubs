@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { useAuthContext } from '../../hooks/useAuthContext'
+import { useClubContext } from '../../hooks/useClubContext'
 
 function ProfileCard() {
-  const { club } = useAuthContext()
+  const {clubData} = useClubContext()
   return (
-    <div className='card profile-card'>
-          <img className='profile-img' src="EILTECH.jpg" alt="club logo" />
-          {club && <h2>Name here</h2>}
+     <div className='card profile-card'>
+          {clubData && <><img className='profile-img' src={clubData.logo} alt="club logo" />
+          <h2>{clubData.name}</h2></>}
     </div>
   )
 }

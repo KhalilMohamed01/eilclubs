@@ -112,4 +112,6 @@ clubSchema.statics.login = async function (username, password) {
 }
 
 
+
+
 module.exports = mongoose.model('Club',clubSchema)

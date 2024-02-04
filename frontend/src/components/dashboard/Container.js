@@ -1,5 +1,4 @@
 import React from 'react'
-
 import EventsList from './EventsList'
 
 function Container() {
@@ -8,7 +7,6 @@ function Container() {
       <div className='event-panel'>
         
         <EventsList/>
-
 
     </div>
   )

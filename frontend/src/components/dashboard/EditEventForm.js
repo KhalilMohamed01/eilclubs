@@ -12,7 +12,7 @@ function EditEventForm({event}) {
   const [poster, setPoster] = useState('')
   const [date, setDate] = useState('')
   const [error, setError] = useState(null)
-  const [sucess, setSucess] = useState(null)
+  const [success, setSucess] = useState(null)
 
 
 
@@ -74,7 +74,7 @@ function EditEventForm({event}) {
     <form className='event-form' onSubmit={handleSubmit}>
 
           <h2>Edit EVENT :</h2>
-          {sucess && <div className='sucess'>{sucess}</div>}
+          {success && <div className='sucess'>{success}</div>}
           {error && <div className='error'>{error}</div>}       
              <label>Title :</label>
           <input placeholder="Event's title" type='text' onChange={(e) => setTitle(e.target.value)} value={title} required></input>
