@@ -130,7 +130,7 @@ const updateClub = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({error: 'No such club'})
   }
-  const club = await Club.findOneAndUpdate({_id:id},req.body) 
+  const club = await Club.findOneAndUpdate({_id:id},req.body,{ new: true }) 
   console.log(club.admin.password)
   if (!club) {
     return res.status(400).json({error: 'No such club'})
