@@ -521,3 +521,63 @@ background: var(--card-bg-color);
 .socials-form  > div > input{
   width: 90%;
 }
+
+.members-panel {
+  display: flex;
+  flex-direction: column;
+  row-gap:1rem ;
+  width: 100%;
+  align-items: end;
+}
+
+.add-btn {
+  align: right;
+ padding: 16px 32px 16px 32px;
+  background: var(--card-bg-color);
+  color: var(--text-color);
+  display: flex;
+  height: 35px;
+  width: fit-content;
+  font-size: 15px;
+  align-items: center;
+  justify-content: space-evenly;
+
+  &:hover{
+    background: var(--card-bg2-color);
+    cursor: pointer;
+
+}
+}
+
+.members-panel-content {
+  width: 100%;
+  align-items: center;
+}
+table{
+  padding: 5px;
+}
+table th {
+    padding:12px;
+    text-align: left;
+    background-color: var(--bg-color);
+    color: white;
+
+
+  
+}
+
+table tr{
+  background-color: var(--bg-color);
+}
+table td {
+  padding: 12px;
+}
+
+table tr:hover {
+  background-color: var(--card-bg2-color);
+}
+
+.members-table {
+  width: 100%;
+  border-radius: 20px;
+}

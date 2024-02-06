@@ -14,9 +14,9 @@ function Profile() {
                 <Sidebar/>
               </div>
               <div className="right-panel">
-                <div className='card'>
+                
                 <ProfilePanel/>
-                </div>
+                
               </div>
 
           </div>

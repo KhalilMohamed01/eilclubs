@@ -10,9 +10,7 @@ function ProfilePanel() {
   const [instagram,setInstagram] = useState('')
   const [website,setWebsite] = useState('')
   const [username,setUsername] = useState('')
-  const [password,setPassword] = useState('')
 
-  const [currentPassword,setCurrentPassword] = useState('')
 
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(null)
@@ -44,14 +42,9 @@ function ProfilePanel() {
       e.preventDefault();
   //do not refresh the page
      
-      if(password === '') {
-        setPassword(currentPassword)
-      }
-      const updatedClub = { name, desc, logo, admin:{username,password},socials:{discord , instagram ,website },oldPassword:currentPassword}
-      console.log(updatedClub)
-      if(!currentPassword){
-        setError("Please enter current password to confirm update !")
-      }
+
+      const updatedClub = { name, desc, logo,socials:{discord , instagram ,website }}
+
       const response = await fetch('/api/clubs/'+ clubData._id, {
         method: 'PATCH',
         body: JSON.stringify(updatedClub),
@@ -86,6 +79,7 @@ function ProfilePanel() {
       },[dispatch,clubData])
   return (
     <div>
+      <div className='card'>
       <form className='profile-form' onSubmit={handleSubmit}>
       {success && <div className='sucess'>{success}</div>}
           {error && <div className='error'>{error}</div>}       
@@ -115,19 +109,10 @@ function ProfilePanel() {
 
 
         </div>
-        <div className='line'></div>
-        <h4 className='text-center' > Admin login :</h4>
-        <label>Username :</label>
-        <input placeholder="Username" type='text'  value={username} disabled></input>
-        <label>Password :</label>
-        <input placeholder="new Password" type='password' onChange={(e) => setPassword(e.target.value)}   ></input>
-
-        <div className='line'></div>
-        <label>Current password :</label>
-        <input placeholder="current password" type='password' onChange={(e) => setCurrentPassword(e.target.value)} required></input>
 
         <button>Update</button>
       </form>
+    </div>
     </div>
   )
 }
