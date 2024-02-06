@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaUserPlus } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import { useClubContext } from '../../hooks/useClubContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
@@ -7,40 +9,50 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 function MembersPanel() {
 
     const {clubData,dispatch} = useClubContext()  
-    console.log(clubData)
+    console.log(clubData.members)
+
     const {club} = useAuthContext()
+    var count = Object.keys(clubData.members).length;
+    console.log(count)
+
+    useEffect(() => {
+        const getClub = async () => {
+            const response = await fetch('/api/clubs/' + club.club_id)
+            const json = await response.json()  
+                    console.log(json)
+  
+            if (response.ok) {
+              dispatch({ type: 'SET_CLUB',payload:json })
+            }
+        }
+        if(club){
+            getClub()
+        }
+        
+    },[dispatch,club])
 
   return (
     <div className='members-panel'>
       <button className='card add-btn'><FaUserPlus />&nbsp;Add</button>
       <div className='card members-panel-content'>
       <table className='members-table'>
-        {!clubData.members &&         <><tr>
+      <tr>
             <th>Member</th>
             <th>Role</th>
             <th>Action</th>
-        </tr><tr>There is no members.</tr></>}
+    </tr>
+        {count === 0 && <p className='text-center'>There is no members found.</p>}
+        {clubData.members && clubData.members.map((member)=>{
+            return (
+              <tr key={member._id}>
+            <td>{member.fname} {member.lname}</td>
+            <td>{member.discord}</td>
+            <td><FaUserEdit /> <MdDelete /></td>
+        </tr>)
+                
+        })}
+  
 
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Berglunds snabbköp</td>
-            <td>Christina Berglund</td>
-            <td>Sweden</td>
-        </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-        </tr>
-        <tr>
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
-        </tr>
        </table>
       </div>
     </div>
