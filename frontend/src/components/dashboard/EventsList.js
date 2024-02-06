@@ -23,7 +23,7 @@ function EventsList() {
         if(club){
             fetchEvents()
         }
-        
+    
     },[dispatch,club])
 
  

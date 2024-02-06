@@ -17,10 +17,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={club ? <Dashboard /> : <Navigate to="/login"/>}/> 
-          <Route path="/profile" element={club ?<Profile />: <Navigate to="/login"/>}/> 
+          <Route path="/profile" element={club ?<Profile />: <Navigate to="/login"/>}></Route> 
           <Route path="/events" element={club ?<Events />: <Navigate to="/login"/>}/> 
           <Route path="/members" element={club ?<Members />: <Navigate to="/login"/>}/> 
-
           <Route path="/login" element={!club ? <Login/> : <Navigate to="/dashboard"/>}/>
         </Routes>
         <Footer/>

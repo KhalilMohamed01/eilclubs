@@ -8,7 +8,6 @@ function ProfilePanel() {
   const [logo,setLogo] = useState('')
   const [discord,setDiscord] = useState('')
   const [instagram,setInstagram] = useState('')
-  const [twitter,setTwitter] = useState('')
   const [website,setWebsite] = useState('')
   const [username,setUsername] = useState('')
   const [password,setPassword] = useState('')
@@ -16,7 +15,7 @@ function ProfilePanel() {
   const [currentPassword,setCurrentPassword] = useState('')
 
   const [error, setError] = useState(null)
-  const [success, setSucess] = useState(null)
+  const [success, setSuccess] = useState(null)
 
 
 
@@ -35,7 +34,6 @@ function ProfilePanel() {
         if(json.socials){
           setDiscord(json.socials.discord && json.socials.discord)
           setInstagram(json.socials.instagram && json.socials.instagram)
-          setTwitter(json.socials.twitter && json.socials.twitter)
           setWebsite(json.socials.website && json.socials.website)
         }
       }
@@ -46,10 +44,10 @@ function ProfilePanel() {
       e.preventDefault();
   //do not refresh the page
      
-      if(!password) {
+      if(password === '') {
         setPassword(currentPassword)
       }
-      const updatedClub = { name, desc, logo, admin:{username,password},socials:{discord , instagram , twitter,website },oldPassword:currentPassword}
+      const updatedClub = { name, desc, logo, admin:{username,password},socials:{discord , instagram ,website },oldPassword:currentPassword}
       console.log(updatedClub)
       if(!currentPassword){
         setError("Please enter current password to confirm update !")
@@ -66,11 +64,14 @@ function ProfilePanel() {
       console.log(json)
 
       if (!response.ok) {
+        setSuccess(null)
         setError(json.error)
       }
       if (response.ok) {
         setError(null)
-        setSucess("Club informations has been updated successfully.")
+        setSuccess("Club informations has been updated successfully.")
+        dispatch({type: 'UPDATE_CLUB',payload:json})
+
   
       }
   
@@ -108,10 +109,6 @@ function ProfilePanel() {
         <input placeholder="Club's instagram link" type='text' onChange={(e) => setInstagram(e.target.value)}  value={instagram} ></input>
           </div>
           <div>
-       <label>Twitter :</label>
-        <input placeholder="Club's twitter link" type='text' onChange={(e) => setTwitter(e.target.value)}  value={twitter} ></input>
-          </div>
-          <div>
         <label>Website :</label>
         <input placeholder="Club's website link" type='text' onChange={(e) => setWebsite(e.target.value)}  value={website} ></input>
           </div>
@@ -121,9 +118,9 @@ function ProfilePanel() {
         <div className='line'></div>
         <h4 className='text-center' > Admin login :</h4>
         <label>Username :</label>
-        <input placeholder="Username" type='text' onChange={(e) => setUsername(e.target.value)}  value={username} ></input>
+        <input placeholder="Username" type='text'  value={username} disabled></input>
         <label>Password :</label>
-        <input placeholder="new Password" type='password' onChange={(e) => setPassword(e.target.value)}  ></input>
+        <input placeholder="new Password" type='password' onChange={(e) => setPassword(e.target.value)}   ></input>
 
         <div className='line'></div>
         <label>Current password :</label>

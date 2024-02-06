@@ -65,17 +65,34 @@ const getClub = async (req, res) => {
   const { id } = req.params
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({error: 'No such club'})
+    return res.status(404).json({ error: 'No such club' })
   }
 
-  const club = await Club.findById(id)
+  try {
+    const club = await Club.findById(id)
 
-  if (!club) {
-    return res.status(404).json({error: 'No such club'})
+    if (!club) {
+      return res.status(404).json({ error: 'No such club' })
+    }
+    const { _id, name, desc,logo, socials, members ,admin} = club;
+
+
+    const clubData = {
+      _id,
+      name,
+      desc,
+      logo,
+      socials,
+      members,
+      admin:{username:admin.username}
+    };
+
+    res.status(200).json(clubData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-
-  res.status(200).json(club)
-}
+};
 
 // create a new event
 const createClub = async (req, res) => {

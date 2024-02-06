@@ -106,8 +106,8 @@ clubSchema.statics.login = async function (username, password) {
   if (!match) {
     throw Error('Incorrect password')
   }
-
-  return club
+  
+  return club._id
   
 }
 

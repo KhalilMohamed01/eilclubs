@@ -12,7 +12,7 @@ function EditEventForm({event}) {
   const [poster, setPoster] = useState('')
   const [date, setDate] = useState('')
   const [error, setError] = useState(null)
-  const [success, setSucess] = useState(null)
+  const [success, setSuccess] = useState(null)
 
 
 
@@ -57,7 +57,7 @@ function EditEventForm({event}) {
     }
     if (response.ok) {
       setError(null)
-      setSucess("Event has been updated.")
+      setSuccess("Event has been updated.")
 
 
       dispatch({type: 'DELETE_EVENT',payload:{'_id':event}})
