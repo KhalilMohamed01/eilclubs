@@ -324,6 +324,7 @@ hr{
   min-height: 93vh;
 }
 
+
 .line{
   border-bottom:1px solid var(--bg-color);
   width:100%;
@@ -635,4 +636,26 @@ table tr:hover {
 .section-active{
   border: 1px solid var(--border-color);
   background: var(--card-bg2-color);
+}
+
+.hero{
+  display: flex;
+  column-gap: 7rem;
+  padding-top: 32px;
+  align-items: center;
+}
+
+.hero > div > h2 {
+  font-size: 42px;
+}
+.hero > div > h2 > span {
+  color: var(--primary-light-color);
+}
+.hero > div > button {
+  width: 50%;
+  font-size: 20px;
+}
+.hero > img {
+  width: 35%;
+  height: auto;
 }

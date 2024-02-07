@@ -9,7 +9,7 @@ function Header() {
               <h1>LOGO</h1>
         </Link>   
         <Navbar/>
-        <button className='action-button'>Login</button>
+        <Link to="/login"><button className='action-button'>login</button></Link>
       
     </div>
   )
