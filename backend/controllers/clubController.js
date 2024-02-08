@@ -40,8 +40,8 @@ const signupUser = async (req,res) => {
 
 // get all events
 const getClubs = async (req, res) => {
-  const clubs = await Club.find({}).sort({date: -1})
-
+  const clubs = await Club.find({}).sort({date: -1}).select("-admin")
+  
   res.status(200).json(clubs)
 }
 

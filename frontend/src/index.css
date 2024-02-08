@@ -16,7 +16,9 @@
 body {
   display: flex;
     flex-direction: column;
-  padding-left: 3%;
+    max-width: 1440px;
+    margin: auto;
+    padding-left: 3%;
   padding-right: 3%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -642,6 +644,7 @@ table tr:hover {
   display: flex;
   column-gap: 7rem;
   padding-top: 32px;
+
   align-items: center;
 }
 
@@ -658,4 +661,36 @@ table tr:hover {
 .hero > img {
   width: 35%;
   height: auto;
+}
+/*
+CLUB SECTION
+*/
+
+.club-section {
+  padding-top: 32px;
+}
+.club-section-title {
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  background: var(--primary-color);
+}
+.club-section-title > h2 {
+  letter-spacing: 2ch;
+}
+
+.clubs-container {
+  padding-top: 32px;
+  display: grid;
+  
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .clubs-container > div {
+    grid-column: span 2; /* Span two columns */
+  }
 }
