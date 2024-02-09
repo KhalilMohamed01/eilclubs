@@ -7,6 +7,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Profile from './pages/Profile';
 import Events from './pages/Events';
 import Members from './pages/Members';
+import Club from './pages/Club';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
           <Route path="/profile" element={club ?<Profile />: <Navigate to="/login"/>}></Route> 
           <Route path="/events" element={club ?<Events />: <Navigate to="/login"/>}/> 
           <Route path="/members" element={<Members />}/> 
+          <Route path="/club/:id" element={<Club/>} />
+
           <Route path="/login" element={!club ? <Login/> : <Navigate to="/dashboard"/>}/>
         </Routes>
         <Footer/>

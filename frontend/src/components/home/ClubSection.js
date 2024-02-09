@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function ClubSection() {
     const [clubs,setClubs] = useState();
@@ -21,18 +22,12 @@ function ClubSection() {
       </div>
       <div className='clubs-container'>
         {clubs && clubs.map((club) => (
-            <div className='card profile-card'>
+           <Link to={{
+            pathname: '/club/' + club._id,
+        }}> <div  onClkey={club._id} className='card profile-card'>
             <img className='profile-img' src={club.logo} alt="club logo" />
             <h2>{club.name}</h2>
-            </div>
-
-          )
-        )}
-                {clubs && clubs.map((club) => (
-            <div className='card profile-card'>
-            <img className='profile-img' src={club.logo} alt="club logo" />
-            <h2>{club.name}</h2>
-            </div>
+            </div></Link>
 
           )
         )}
