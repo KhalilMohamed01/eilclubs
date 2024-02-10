@@ -15,11 +15,12 @@
 
 body {
   display: flex;
+  max-width: 100%;
     flex-direction: column;
     max-width: 1440px;
     margin: auto;
-    padding-left: 3%;
-  padding-right: 3%;
+    padding-left: 5%;
+  padding-right: 5%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -104,6 +105,9 @@ a{
   gap: 2rem;
 }
 .right-panel{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   flex: 3;
 }
 
@@ -698,4 +702,61 @@ CLUB SECTION
   padding-top: 20px;
   padding-bottom: 20px;
   letter-spacing: 2ch;
+}
+
+/* club details */
+
+.club-profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+padding: 32px 16px 32px 16px;
+}
+.club-profile > img{
+ width: 192px;
+ border: 2px solid var(--border-color);
+ border-radius: 50%;
+}
+
+.club-socials{
+  display: flex;
+  gap: 16px;
+}
+
+
+.club-info-card {
+  padding: 1% 3% 1% 3%;
+}
+.club-events-card{
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; 
+  max-width: 100%;
+
+}
+
+.club-members{
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; 
+  max-width: 100%;
+
+}
+.member-card{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+}
+.member-card > img {
+  border-radius: 50%;
+  width: 128px;
+}
+
+.no-matches {
+  color: var(--bg-color);
 }
