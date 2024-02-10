@@ -7,8 +7,8 @@ function Member({member}) {
         <div key={member._id} className="card member-card">
             {console.log(member)}
                       <img src={member.avatar} alt={member.lname} />
-                      <div className="event-info space">
-                          <div className='text-center title'>{member.lname} { member.fname} </div>
+                      <div className="text-center event-info space">
+                          <div className=' title'>{member.lname} { member.fname} </div>
                           <p>{member.role}</p>
                           <p>Discord : {member.discord}</p>
 

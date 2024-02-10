@@ -83,9 +83,7 @@ function Club(props) {
                     {isLoaded && club.members.map((member) => {
                       return <Member member={member}/>
                     })}
-                                   {isLoaded && club.members.map((member) => {
-                      return <Member member={member}/>
-                    })}
+                              
                   </div>
               </div>
               </div>

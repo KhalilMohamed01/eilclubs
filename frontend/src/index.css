@@ -685,23 +685,20 @@ CLUB SECTION
 .clubs-container {
   padding-top: 32px;
   display: grid;
-  
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;   
 }
 
-@media screen and (max-width: 768px) {
-  .clubs-container > div {
-    grid-column: span 2; /* Span two columns */
-  }
-}
 
-.event-section-title {
+.event-section-title > h2{
+
+  letter-spacing: 2ch;
+}
+.event-section-title{
   text-align: center;
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
-  letter-spacing: 2ch;
 }
 
 /* club details */
@@ -722,6 +719,12 @@ padding: 32px 16px 32px 16px;
 .club-socials{
   display: flex;
   gap: 16px;
+}
+
+.club-socials > a {
+  &:hover{
+    color: var(--primary-light-color);
+  }
 }
 
 
@@ -759,4 +762,16 @@ align-items: center;
 
 .no-matches {
   color: var(--bg-color);
+}
+
+
+.slider > img{
+  width: 100%;
+  height: 250px;
+  object-fit:cover;
+
+}
+.event-details{
+  background-color: var(--card-bg-color);
+  padding: 8px;
 }
