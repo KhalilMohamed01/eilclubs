@@ -11,9 +11,6 @@ function Sidebar() {
   const setActive = () => {
     removeActive()
     switch (url) {
-      case '/dashboard':
-        document.getElementById('dashboard').classList.add('active')
-        break;
       case '/profile':
         document.getElementById('profile').classList.add('active')
         break
@@ -31,7 +28,6 @@ function Sidebar() {
   }
 
   const removeActive=() => {
-    document.getElementById('dashboard').classList.remove('active')
     document.getElementById('profile').classList.remove('active')
     document.getElementById('events').classList.remove('active')
     document.getElementById('members').classList.remove('active')
@@ -44,8 +40,6 @@ function Sidebar() {
   return (
     <div className='card'>
           <div className='sidebar'>
-               <Link className='sidebar-item' to="/dashboard" id='dashboard'>             
-              <MdDashboard/> Dashboard</Link>
               <Link className='sidebar-item' id='profile'  to="/profile"><ImProfile/> Profile </Link>
               <Link className='sidebar-item' to="/events" id='events'> <MdEmojiEvents /> Events</Link>
               <Link className='sidebar-item' to="/members" id='members'><FaUsers/> Members</Link>

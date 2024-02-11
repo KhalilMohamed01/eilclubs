@@ -17,13 +17,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={club ? <Dashboard /> : <Navigate to="/login"/>}/> 
+          <Route path="/club/:id" element={<Club/>} />
           <Route path="/profile" element={club ?<Profile />: <Navigate to="/login"/>}></Route> 
           <Route path="/events" element={club ?<Events />: <Navigate to="/login"/>}/> 
-          <Route path="/members" element={<Members />}/> 
-          <Route path="/club/:id" element={<Club/>} />
+          <Route path="/members" element={club ? <Members /> :<Navigate to="/login"/>}/> 
+          
 
-          <Route path="/login" element={!club ? <Login/> : <Navigate to="/dashboard"/>}/>
+          <Route path="/login" element={!club ? <Login/> : <Navigate to="/profile"/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

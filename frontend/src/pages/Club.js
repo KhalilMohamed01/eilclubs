@@ -32,7 +32,6 @@ function Club(props) {
       const events = await response.json()
       console.log(events)  
       setEvents(events) 
-      setisLoaded(true)
   }
         getClub(params.id)
         getEventsByClub(params.id)
@@ -43,7 +42,7 @@ function Club(props) {
 <div className='page'>
     
     <Link to="/"><h1><FaCircleChevronLeft/></h1></Link>  
-         {isLoaded && <div className='dashboard'>
+         {club && <div className='dashboard'>
               <div className="left-panel">
 
                 <div className='card club-profile'>
@@ -80,7 +79,7 @@ function Club(props) {
               <div className='card club-info-card'>
               <h2>Les membres du club : </h2>
                   <div className='club-members'>
-                    {isLoaded && club.members.map((member) => {
+                    {club && club.members.map((member) => {
                       return <Member member={member}/>
                     })}
                               
