@@ -262,8 +262,7 @@ textarea {
   outline: none;
   color: var(--text-color);
   padding: 7px 10px 5px 10px;
-  max-width: 100%;
-  min-width: 100%;
+  resize:vertical;
   width: auto ;
   min-height: 30px;
   max-height: 250px;
@@ -746,9 +745,7 @@ align-items: center;
 }
 
 @media screen and (max-width: 1024px) {
-  textarea {
-    min-width: 100%;
-    }
+
 
 
   input[type=date] {
