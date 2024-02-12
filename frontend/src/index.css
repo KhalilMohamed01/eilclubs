@@ -95,6 +95,8 @@ a{
 .profile-img {
   border-radius: 50%;
   width: 96px;
+  object-fit: cover;
+  aspect-ratio: 1;
     
 }
 
@@ -349,38 +351,6 @@ hr{
   font-size: small;
   padding-bottom: 5px;
 }
-@media screen and (max-width: 1024px) {
-  textarea {
-    min-width: 100%;
-    }
-
-
-  input[type=date] {
-    width: 100%;
-  }
-  input[type=text] {
-      width: 100%;
- }
-}
-
-@media screen and (max-width: 783px) {
-  .dashboard{
-    display: flex;
-    flex-direction: column;
-  }
-  .left-panel{
-    width: 100%;
-  }
-  .right-panel{
-    width: 100%;
-  }
-
-  .event-card{
-    min-width: 98%;
-  }
-
-}
-
 
 
 .error{
@@ -659,7 +629,6 @@ table tr:hover {
   color: var(--primary-light-color);
 }
 .hero > div > button {
-  width: 50%;
   font-size: 20px;
 }
 .hero > img {
@@ -775,3 +744,52 @@ align-items: center;
   background-color: var(--card-bg-color);
   padding: 8px;
 }
+
+@media screen and (max-width: 1024px) {
+  textarea {
+    min-width: 100%;
+    }
+
+
+  input[type=date] {
+    width: 100%;
+  }
+  input[type=text] {
+      width: 100%;
+ }
+}
+
+@media screen and (max-width: 783px) {
+  .home-header{
+    flex-direction: column;
+    gap: 16px;
+    align-items: normal;
+  }
+  .home-nav{
+    justify-content: center;
+  }
+
+  .hero{
+    flex-direction: column;
+  }
+  .dashboard{
+    display: flex;
+    flex-direction: column;
+  }
+  .left-panel{
+    width: 100%;
+  }
+  .right-panel{
+    width: 100%;
+  }
+
+  .event-card{
+    min-width: 98%;
+  }
+
+  .action-button{
+    width: 100%;
+  }
+
+}
+
