@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLogin } from '../hooks/useLogin'
 
@@ -12,6 +12,11 @@ function Login() {
     
     await login(username,password)
   }
+
+
+  useEffect(()=>{
+    document.title = 'Eil-Clubs - Login'
+  },[])
   return (
     <div className='flex h-100 align-center justify-center'>
       <div className="card login-card">

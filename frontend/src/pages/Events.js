@@ -7,6 +7,10 @@ import Container from '../components/dashboard/Container'
 
 
 function Events() {
+  useEffect(()=>{
+    document.title = 'Eil-Clubs - Events'
+
+  },[])
   return (
     <div className='page'>
           <Navbar />

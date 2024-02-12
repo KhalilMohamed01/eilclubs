@@ -11,6 +11,8 @@ function Profile() {
 
   const {club} = useAuthContext()
   useEffect(() => {
+    document.title = 'Eil-Clubs - Profile'
+
       const getClub = async () => {
           const response = await fetch('/api/clubs/' + club.club_id)
           const json = await response.json()  

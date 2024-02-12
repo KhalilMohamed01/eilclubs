@@ -24,6 +24,7 @@ function Club(props) {
       const getClub = async (id) => {
         const response = await fetch('/api/clubs/' + id) 
         const club = await response.json()
+        document.title = club.name
         console.log(club)  
         setClub(club) 
     }

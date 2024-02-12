@@ -8,6 +8,9 @@ import MembersPanel from '../components/dashboard/MembersPanel'
 
 
 function Members() {
+  useEffect(()=>{
+    document.title = 'Eil-Clubs - Members'
+  },[])
   return (
     <div className='page'>
           <Navbar />
