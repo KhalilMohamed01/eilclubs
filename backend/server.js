@@ -11,7 +11,7 @@ const cors = require('cors');
 app.use(cors());
 // Allow specific origin(s)
 app.use(cors({
-  origin: 'https://eilclubs-45r8adb3o-khalilmohamed01s-projects.vercel.app/'
+  origin: 'https://eilclubs-git-test-khalilmohamed01s-projects.vercel.app/'
 }));
 app.use(express.json())
 app.use((req, res, next) => {
