@@ -10,11 +10,12 @@ import { useDashboardContext } from '../../hooks/useDashboardContext';
 
 function EventsList() {
     const {events,dispatch} = useDashboardContext()
-
+    const rootUrl = process.env.NODE_ENV === 'production' ? 
+    'https://eilclubs-api.vercel.app/' : 'http://localhost:4000'
     const {club} = useAuthContext()
     useEffect(() => {
         const fetchEvents = async () => {
-            const response = await fetch('/api/events/club/' + club.club_id)
+            const response = await fetch(rootUrl +'/api/events/club/' + club.club_id)
             const json = await response.json()
             if (response.ok) {
               dispatch({ type: 'SET_EVENTS',payload:json })

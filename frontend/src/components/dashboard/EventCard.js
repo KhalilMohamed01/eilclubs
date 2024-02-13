@@ -10,12 +10,14 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 
 function EventCard( {event}) {
     const {dispatch} = useDashboardContext()
+    const rootUrl = process.env.NODE_ENV === 'production' ? 
+    'https://eilclubs-api.vercel.app/' : 'http://localhost:4000'
     const {club} = useAuthContext()
     const handleDelete = async () => {
         if(!club){
             return
         }
-        const response = await fetch('/api/events/' + event._id,{
+        const response = await fetch(rootUrl +'/api/events/' + event._id,{
             method:'DELETE',
             headers: {
                 'Authorization': `Bearer ${club.token}`

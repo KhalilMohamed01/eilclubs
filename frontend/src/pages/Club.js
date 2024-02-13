@@ -17,19 +17,20 @@ function Club(props) {
     const [events,setEvents] = useState();
     const [isLoaded,setisLoaded] = useState(false)
 
-
+    const rootUrl = process.env.NODE_ENV === 'production' ? 
+    'https://eilclubs-api.vercel.app/' : 'http://localhost:4000'
 
 
     useEffect(() =>{
       const getClub = async (id) => {
-        const response = await fetch('/api/clubs/' + id) 
+        const response = await fetch(rootUrl +'/api/clubs/' + id) 
         const club = await response.json()
         document.title = club.name
         console.log(club)  
         setClub(club) 
     }
     const getEventsByClub = async (id) => {
-      const response = await fetch('/api/events/club/' + id) 
+      const response = await fetch(rootUrl +'/api/events/club/' + id) 
       const events = await response.json()
       console.log(events)  
       setEvents(events) 

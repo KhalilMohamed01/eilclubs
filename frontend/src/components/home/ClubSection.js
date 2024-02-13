@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 function ClubSection() {
     const [clubs,setClubs] = useState();
 
-
+    const rootUrl = process.env.NODE_ENV === 'production' ? 
+    'https://eilclubs-api.vercel.app/' : 'http://localhost:4000'
 
     useEffect(() =>{
       const getClubs = async () => {
-        const response = await fetch('/api/clubs/')
+        const response = await fetch(rootUrl +'/api/clubs/')
         const clubs = await response.json()  
         setClubs(clubs) 
     }

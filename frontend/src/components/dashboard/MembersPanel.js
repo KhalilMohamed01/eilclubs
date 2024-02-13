@@ -14,10 +14,11 @@ function MembersPanel() {
     const {club} = useAuthContext()
     var count = Object.keys(clubData.members).length;
     console.log(count)
-
+    const rootUrl = process.env.NODE_ENV === 'production' ? 
+    'https://eilclubs-api.vercel.app/' : 'http://localhost:4000'
     useEffect(() => {
         const getClub = async () => {
-            const response = await fetch('/api/clubs/' + club.club_id)
+            const response = await fetch(rootUrl +'/api/clubs/' + club.club_id)
             const json = await response.json()  
                     console.log(json)
   
