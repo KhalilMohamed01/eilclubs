@@ -13,12 +13,13 @@ function EventSection() {
   const [events,setEvents] = useState();
   const [isLoaded,setisLoaded] = useState(false)
 
-
+  const rootUrl = process.env.NODE_ENV === 'production' ? 
+'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
 
 
   useEffect(() =>{
     const getEvents = async () => {
-      const response = await fetch('/api/events/') 
+      const response = await fetch(rootUrl +'/api/events/') 
       const events = await response.json()
       setEvents(events) 
       setisLoaded(true)

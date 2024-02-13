@@ -19,9 +19,11 @@ function EditEventForm({event}) {
       const {dispatch} = useDashboardContext()  
 
     const {club} = useAuthContext()
+    const rootUrl = process.env.NODE_ENV === 'production' ? 
+    'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
 
     const getEventData = async () => {
-      const response = await fetch('/api/events/' + event)
+      const response = await fetch(rootUrl +'/api/events/' + event)
       const json = await response.json()
       if(response.ok){
         let dateFormated = moment(json.date).format('YYYY-MM-DD');
@@ -42,7 +44,7 @@ function EditEventForm({event}) {
    
     const updatedEvent = { title, desc, poster, date }
     console.log(updatedEvent)
-    const response = await fetch('/api/events/'+ event, {
+    const response = await fetch(rootUrl +'/api/events/'+ event, {
       method: 'PATCH',
       body: JSON.stringify(updatedEvent),
       headers: {

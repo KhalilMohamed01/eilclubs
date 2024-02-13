@@ -6,7 +6,13 @@ const eventRoutes = require('./routes/events')
 const clubRoutes = require('./routes/clubs')
 const app = express()
 
-
+const cors = require('cors');
+// Allow all origins
+app.use(cors());
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'https://eilclubs.vercel.app/'
+}));
 app.use(express.json())
 app.use((req, res, next) => {
     console.log(req.path, req.method)
