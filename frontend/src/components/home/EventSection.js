@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -28,7 +30,7 @@ function EventSection() {
   return (
     <div>
       <div className="event-section-title">
-        <h2>UPCOMING EVENTS</h2> 
+        <h2>ÉVÈNEMENTS À VENIR</h2> 
         <p>
           Découvrez les événements excitants prévus par nos clubs passionnants
           au cours du mois à venir !
@@ -52,7 +54,7 @@ function EventSection() {
         className="mySwiper"
       >
       {isLoaded && events.map((event) => {
-        return       <SwiperSlide  className="slider" key={event._id}><img src={event.poster} alt={event.title}></img><div className='event-details'><h2>{event.title}</h2><span>{event.date}</span></div></SwiperSlide>
+        return       <SwiperSlide  className="slider" key={event._id}><img src={event.poster} alt={event.title}></img><div className='event-details'><h2>{event.title}</h2><p>{new Date() - new Date(event.date)}</p><span>{formatDistanceToNow(new Date(event.date),{addSuffix:true})}</span></div></SwiperSlide>
 
       })}
 
