@@ -7,12 +7,13 @@ const clubRoutes = require('./routes/clubs')
 const app = express()
 
 const cors = require('cors');
-// Allow all origins
-app.use(cors());
-// Allow specific origin(s)
-app.use(cors({
-  origin: 'https://eilclubs-git-test-khalilmohamed01s-projects.vercel.app/'
-}));
+//allow all
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    next();
+  })
 app.use(express.json())
 app.use((req, res, next) => {
     console.log(req.path, req.method)
