@@ -30,3 +30,5 @@ mongoose.connect(process.env.MONGO_URI)
         console.log(console.error())
     })
 
+
+module.exports = app;
