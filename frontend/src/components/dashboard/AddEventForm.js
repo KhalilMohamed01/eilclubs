@@ -14,7 +14,7 @@ function AddEventForm() {
   const [date, setDate] = useState('')
   const [error, setError] = useState(null)
   const rootUrl = process.env.NODE_ENV === 'production' ? 
-  'https://eilclubs-api.vercel.app/' : 'http://localhost:4000'
+  'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
    
   const handleSubmit = async (e) => {
     e.preventDefault();

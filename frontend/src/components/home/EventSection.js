@@ -14,7 +14,7 @@ function EventSection() {
   const [isLoaded,setisLoaded] = useState(false)
 
   const rootUrl = process.env.NODE_ENV === 'production' ? 
-'https://eilclubs-api.vercel.app/' : 'http://localhost:4000'
+'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
 
 
   useEffect(() =>{

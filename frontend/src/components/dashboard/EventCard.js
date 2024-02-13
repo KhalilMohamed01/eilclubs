@@ -11,7 +11,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 function EventCard( {event}) {
     const {dispatch} = useDashboardContext()
     const rootUrl = process.env.NODE_ENV === 'production' ? 
-    'https://eilclubs-api.vercel.app/' : 'http://localhost:4000'
+    'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
     const {club} = useAuthContext()
     const handleDelete = async () => {
         if(!club){
