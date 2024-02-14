@@ -7,7 +7,7 @@ export const useLogin = () => {
     const [isLoading,setIsLoading] = useState(null)
     const {dispatch} = useAuthContext()
     const rootUrl = process.env.NODE_ENV === 'production' ? 
-    'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
+    'https://eilclubs-api-git-test-khalilmohamed01s-projects.vercel.app' : 'http://localhost:4000'
     const login = async(username,password)=> {
         setIsLoading(true)
         setError()

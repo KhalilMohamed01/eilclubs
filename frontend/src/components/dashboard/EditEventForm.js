@@ -20,7 +20,7 @@ function EditEventForm({event}) {
 
     const {club} = useAuthContext()
     const rootUrl = process.env.NODE_ENV === 'production' ? 
-    'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
+    'https://eilclubs-api-git-test-khalilmohamed01s-projects.vercel.app' : 'http://localhost:4000'
 
     const getEventData = async () => {
       const response = await fetch(rootUrl +'/api/events/' + event)
