@@ -1,5 +1,4 @@
 {
-  "proxy": "https://eilclubs-api-git-test-khalilmohamed01s-projects.vercel.app",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
