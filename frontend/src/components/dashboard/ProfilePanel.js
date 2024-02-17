@@ -19,6 +19,8 @@ function ProfilePanel() {
 
   const {clubData,dispatch} = useClubContext()  
   const {club} = useAuthContext()
+  const rootUrl = process.env.NODE_ENV === 'production' ? 
+  'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
 
     const getClubData = async () => {
       console.log(clubData)
