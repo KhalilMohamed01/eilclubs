@@ -8,11 +8,12 @@ const app = express()
 
 const cors = require('cors');
 //allow all
-var corsOptions = {
-    origin: 'https://eilclubs-git-test-khalilmohamed01s-projects.vercel.app',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
-app.use(cors(corsOptions))
+// var corsOptions = {
+//     origin: 'https://eilclubs-git-test-khalilmohamed01s-projects.vercel.app',
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+//   }
+
+app.use(cors())
 
  
 app.use(express.json())
