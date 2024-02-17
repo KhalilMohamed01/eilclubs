@@ -13,6 +13,8 @@ function AddEventForm() {
   const [poster, setPoster] = useState('')
   const [date, setDate] = useState('')
   const [error, setError] = useState(null)
+  const rootUrl = process.env.NODE_ENV === 'production' ? 
+  'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
    
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ function AddEventForm() {
     }
     const event = { title, desc, poster, date }
     
-    const response = await fetch('http://localhost:4000/api/events', {
+    const response = await fetch(rootUrl + '/api/events', {
       method: 'POST',
       body: JSON.stringify(event),
       headers: {

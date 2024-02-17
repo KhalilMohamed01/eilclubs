@@ -6,12 +6,13 @@ export const useLogin = () => {
     const [error,setError] = useState(null)
     const [isLoading,setIsLoading] = useState(null)
     const {dispatch} = useAuthContext()
-
+    const rootUrl = process.env.NODE_ENV === 'production' ? 
+    'https://eilclubs-api.vercel.app' : 'http://localhost:4000'
     const login = async(username,password)=> {
         setIsLoading(true)
         setError()
 
-        const response = await fetch('http://localhost:4000/api/clubs/login',{
+        const response = await fetch(rootUrl + '/api/clubs/login',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({username,password})

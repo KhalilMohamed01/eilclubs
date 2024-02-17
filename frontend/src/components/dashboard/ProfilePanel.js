@@ -22,7 +22,7 @@ function ProfilePanel() {
 
     const getClubData = async () => {
       console.log(clubData)
-      const response = await fetch('http://localhost:4000/api/clubs/' + clubData._id)
+      const response = await fetch(rootUrl + '/api/clubs/' + clubData._id)
       const json = await response.json()
       if(response.ok){
         setName(json.name && json.name)
@@ -45,7 +45,7 @@ function ProfilePanel() {
 
       const updatedClub = { name, desc, logo,socials:{discord , instagram ,website }}
 
-      const response = await fetch('http://localhost:4000/api/clubs/'+ clubData._id, {
+      const response = await fetch(rootUrl + '/api/clubs/'+ clubData._id, {
         method: 'PATCH',
         body: JSON.stringify(updatedClub),
         headers: {
