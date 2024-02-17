@@ -14,7 +14,7 @@ function Profile() {
     document.title = 'Eil-Clubs - Profile'
 
       const getClub = async () => {
-          const response = await fetch('/api/clubs/' + club.club_id)
+          const response = await fetch('http://localhost:4000/api/clubs/' + club.club_id)
           const json = await response.json()  
                   console.log(json)
 

@@ -15,7 +15,7 @@ function EventCard( {event}) {
         if(!club){
             return
         }
-        const response = await fetch('/api/events/' + event._id,{
+        const response = await fetch('http://localhost:4000/api/events/' + event._id,{
             method:'DELETE',
             headers: {
                 'Authorization': `Bearer ${club.token}`

@@ -11,7 +11,7 @@ export const useLogin = () => {
         setIsLoading(true)
         setError()
 
-        const response = await fetch('/api/clubs/login',{
+        const response = await fetch('http://localhost:4000/api/clubs/login',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({username,password})

@@ -21,7 +21,7 @@ function EditEventForm({event}) {
     const {club} = useAuthContext()
 
     const getEventData = async () => {
-      const response = await fetch('/api/events/' + event)
+      const response = await fetch('http://localhost:4000/api/events/' + event)
       const json = await response.json()
       if(response.ok){
         let dateFormated = moment(json.date).format('YYYY-MM-DD');
@@ -42,7 +42,7 @@ function EditEventForm({event}) {
    
     const updatedEvent = { title, desc, poster, date }
     console.log(updatedEvent)
-    const response = await fetch('/api/events/'+ event, {
+    const response = await fetch('http://localhost:4000/api/events/'+ event, {
       method: 'PATCH',
       body: JSON.stringify(updatedEvent),
       headers: {

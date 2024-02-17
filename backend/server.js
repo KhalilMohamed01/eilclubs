@@ -4,9 +4,12 @@ const mongoose = require('mongoose')
 
 const eventRoutes = require('./routes/events')
 const clubRoutes = require('./routes/clubs')
+
+const cors = require('cors')
 const app = express()
 
 
+app.use(cors())
 app.use(express.json())
 app.use((req, res, next) => {
     console.log(req.path, req.method)

@@ -23,7 +23,7 @@ function AddEventForm() {
     }
     const event = { title, desc, poster, date }
     
-    const response = await fetch('/api/events', {
+    const response = await fetch('http://localhost:4000/api/events', {
       method: 'POST',
       body: JSON.stringify(event),
       headers: {

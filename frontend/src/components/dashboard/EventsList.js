@@ -14,7 +14,7 @@ function EventsList() {
     const {club} = useAuthContext()
     useEffect(() => {
         const fetchEvents = async () => {
-            const response = await fetch('/api/events/club/' + club.club_id)
+            const response = await fetch('http://localhost:4000/api/events/club/' + club.club_id)
             const json = await response.json()
             if (response.ok) {
               dispatch({ type: 'SET_EVENTS',payload:json })
