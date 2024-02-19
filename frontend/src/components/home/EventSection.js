@@ -55,7 +55,7 @@ function EventSection() {
         className="mySwiper"
       >
       {isLoaded && events.map((event) => {
-        return       <SwiperSlide  className="slider" key={event._id}><img src={event.poster} alt={event.title}></img><div className='event-details'><h2>{event.title}</h2><p>{new Date() - new Date(event.date)}</p><span>{formatDistanceToNow(new Date(event.date),{addSuffix:true})}</span></div></SwiperSlide>
+        return       <SwiperSlide  className="slider" key={event._id}><img src={event.poster} alt={event.title}></img><div className='event-details'><h2>{event.title}</h2><p>{event.desc}</p><span>{formatDistanceToNow(new Date(event.date),{addSuffix:true})}</span></div></SwiperSlide>
 
       })}
 
